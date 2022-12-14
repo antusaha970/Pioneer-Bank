@@ -46,34 +46,39 @@ numberSetBtn.addEventListener('click', function () {
 // Transition area goes here
 const depositBtn = document.getElementById("depositBtn");
 depositBtn.addEventListener('click', function () {
-    if(document.getElementById("depositAmount").value == ""){
+    if (document.getElementById("depositAmount").value == "") {
         alert("Please enter a minimum amount");
     }
-    else
-    {
-    const depositAmount = document.getElementById("depositAmount").value;
-    const depositAmountNumber = parseFloat(depositAmount);
-    updateSpanText("totalDepositTxt", depositAmountNumber);
-    updateSpanText("totalBalanceTxt", depositAmountNumber);
-    document.getElementById("depositedTxt").innerText = "$"+depositAmountNumber + " is deposited";
-    document.getElementById("depositAmount").value = "";
+    else {
+        const depositAmount = document.getElementById("depositAmount").value;
+        const depositAmountNumber = parseFloat(depositAmount);
+        updateSpanText("totalDepositTxt", depositAmountNumber);
+        updateSpanText("totalBalanceTxt", depositAmountNumber);
+        document.getElementById("depositedTxt").innerText = "$" + depositAmountNumber + " is deposited";
+        document.getElementById("withdrawnTxt").innerText = "";
+        document.getElementById("depositAmount").value = "";
     }
 })
 
 const withdrawBtn = document.getElementById("withdrawBtn");
-withdrawBtn.addEventListener('click',function(){
-    if(document.getElementById("withdrawAmount").value == ""){
+withdrawBtn.addEventListener('click', function () {
+    if (document.getElementById("withdrawAmount").value == "") {
         alert("Please enter a minimum amount");
     }
-    else
-    {
-    const withdrawAmount = document.getElementById("withdrawAmount").value;
-    const withdrawAmountNumber = parseFloat(withdrawAmount);
-
-    updateSpanText("withdrawAmountTxt",withdrawAmountNumber);
-    updateSpanText("totalBalanceTxt",-1*withdrawAmountNumber);
-
-    document.getElementById("withdrawAmount").value = ""
+    else {
+        const withdrawAmount = document.getElementById("withdrawAmount").value;
+        const withdrawAmountNumber = parseFloat(withdrawAmount);
+        const balanceNumber = parseFloat(document.getElementById("totalBalanceTxt").innerText);
+        if (withdrawAmountNumber > balanceNumber) {
+            alert("You don't have enough money in balance");
+        }
+        else {
+            updateSpanText("withdrawAmountTxt", withdrawAmountNumber);
+            updateSpanText("totalBalanceTxt", -1 * withdrawAmountNumber);
+            document.getElementById("withdrawnTxt").innerText = "$" + withdrawAmountNumber + " is withdrawn";
+            document.getElementById("depositedTxt").innerText = "";
+        }
+        document.getElementById("withdrawAmount").value = "";
     }
 })
 
