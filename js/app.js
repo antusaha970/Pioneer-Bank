@@ -40,6 +40,10 @@ numberSetBtn.addEventListener('click', function () {
         transitionArea.style.display = "block";
         const displayNumber = document.getElementById("displayNumber");
         displayNumber.innerText = " " + userNumber;
+        const owner = document.getElementById("userEmail").value;
+        const displayEmail = document.getElementById("displayEmail");
+        displayEmail.innerText = owner;
+
     }
 })
 
