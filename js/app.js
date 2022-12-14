@@ -1,47 +1,79 @@
-// Function area
-function updateSpan(id, forAdd) {
-    const totalDeposit = document.getElementById(id).innerText;
-    const totalDepositNumber = parseFloat(totalDeposit);
-    const total = forAdd + totalDepositNumber;
+// All functions goes here
+function updateSpanText(id, amountToAdd) {
+    const totalDepositTxt = document.getElementById(id).innerText;
+    const totalDepositNumber = parseFloat(totalDepositTxt);
+    const total = amountToAdd + totalDepositNumber;
     document.getElementById(id).innerText = total;
 }
 
-function getNumberFromInp(id) {
-    const amount = document.getElementById(id).value;
-    const amountNumber = parseFloat(amount);
-    return amountNumber;
-}
+// Login area functionality
+const loginBtn = document.getElementById("loginBtn");
 
-// Login area goes here
-const loginBtn = document.getElementById('login-btn');
 loginBtn.addEventListener('click', function () {
-    const loginArea = document.getElementById('login-area');
-    loginArea.style.display = "none";
+    if (document.getElementById("userEmail").value == "") {
+        alert("Please enter your email and password correctly");
+    }
+    else {
+        const userEmail = document.getElementById("userEmail").value;
+        const loginArea = document.getElementById("loginArea");
+        loginArea.style.display = "none";
 
-    const transArea = document.getElementById('transition-area');
-    transArea.style.display = "block";
+        const numberSetupArea = document.getElementById("numberSetupArea");
+        numberSetupArea.style.display = "block";
+
+        const displayName = document.getElementById("displayName");
+        displayName.innerText = "Welcome " + userEmail;
+    }
 })
 
-// Deposit and balance calculation goes here
-const depositBtn = document.getElementById('depositBtn');
+// Number setup area functionality
+const numberSetBtn = document.getElementById("numberSetBtn");
+numberSetBtn.addEventListener('click', function () {
+    if (document.getElementById("userNumber").value == "") {
+        alert("Please enter your number");
+    }
+    else {
+        const userNumber = document.getElementById("userNumber").value;
+        const numberSetupArea = document.getElementById("numberSetupArea");
+        numberSetupArea.style.display = "none";
+        const transitionArea = document.getElementById("transition-area");
+        transitionArea.style.display = "block";
+        const displayNumber = document.getElementById("displayNumber");
+        displayNumber.innerText = " " + userNumber;
+    }
+})
+
+// Transition area goes here
+const depositBtn = document.getElementById("depositBtn");
 depositBtn.addEventListener('click', function () {
-    const depositAmount = document.getElementById('depositAmount').value;
-    const depositNumber = parseFloat(depositAmount);
-
-    updateSpan("totalDeposit", depositNumber);
-
-    updateSpan("totalBalance", depositNumber);
-
-    document.getElementById('depositAmount').value = "";
+    if(document.getElementById("depositAmount").value == ""){
+        alert("Please enter a minimum amount");
+    }
+    else
+    {
+    const depositAmount = document.getElementById("depositAmount").value;
+    const depositAmountNumber = parseFloat(depositAmount);
+    updateSpanText("totalDepositTxt", depositAmountNumber);
+    updateSpanText("totalBalanceTxt", depositAmountNumber);
+    document.getElementById("depositedTxt").innerText = "$"+depositAmountNumber + " is deposited";
+    document.getElementById("depositAmount").value = "";
+    }
 })
 
+const withdrawBtn = document.getElementById("withdrawBtn");
+withdrawBtn.addEventListener('click',function(){
+    if(document.getElementById("withdrawAmount").value == ""){
+        alert("Please enter a minimum amount");
+    }
+    else
+    {
+    const withdrawAmount = document.getElementById("withdrawAmount").value;
+    const withdrawAmountNumber = parseFloat(withdrawAmount);
 
-// Withdraw calculation goes here
-const withdrawBtn = document.getElementById('withdrawBtn');
-withdrawBtn.addEventListener('click', function () {
-    const withdrawAmounts = getNumberFromInp("withdrawAmount");
-    updateSpan("withdrawAmountText", withdrawAmounts);
-    updateSpan("totalBalance", -1 * withdrawAmounts);
-    document.getElementById("withdrawAmount").value = "";
+    updateSpanText("withdrawAmountTxt",withdrawAmountNumber);
+    updateSpanText("totalBalanceTxt",-1*withdrawAmountNumber);
 
+    document.getElementById("withdrawAmount").value = ""
+    }
 })
+

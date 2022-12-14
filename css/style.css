@@ -1,5 +1,6 @@
-body {
-    padding: 100px;
+.mt {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .submit-area {
@@ -13,12 +14,20 @@ body {
     display: none;
 }
 
+#transition-area {
+    height: auto;
+}
+
 .deposit {
-    background: steelblue;
+    background: #474bff;
+    background: -webkit-linear-gradient(252deg, #474bff 0%, #9d23e3 100%);
+    background: linear-gradient(252deg, #474bff 0%, #9d23e3 100%);
 }
 
 .balance {
-    background: rgb(236, 144, 57);
+    background: #ede258;
+    background: -webkit-linear-gradient(252deg, #ede258 0%, #ec9039 100%);
+    background: linear-gradient(252deg, #ede258 0%, #ec9039 100%);
 }
 
 .withdraw {
@@ -29,4 +38,16 @@ body {
     padding: 20px;
     color: white;
     border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.status h2{
+    font-size: 2.5rem;
+}
+
+#numberSetupArea{
+    display: none;
+}
+#displayName{
+    font-weight: bold;
 }
