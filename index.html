@@ -41,11 +41,11 @@
             <h4>Select your mobile banking operator</h4>
             <br>
             <select class="form-select" aria-label="Default select example">
-                <option selected>Bikash</option>
-                <option>Nogod</option>
-                <option>Rocket</option>
-                <option>Upay</option>
-                <option>None</option>
+                <option value="Bikash" selected>Bikash</option>
+                <option value="Nogod">Nogod</option>
+                <option value="Rocket">Rocket</option>
+                <option value="Upay">Upay</option>
+                <option value="None">None</option>
             </select>
             <br>
             <button class="btn btn-success" id="numberSetBtn">Enter</button>
@@ -57,7 +57,8 @@
     <div class="container">
         <div id="transition-area" class="mt ">
             <div class="row">
-                <h3 class="text-center">Account of<span id="displayNumber"></span></h3>
+                <h3 class="text-center">Owner : <span id="displayEmail"></span></h3>
+                <h3 class="text-center">Number : <span id="displayNumber"></span></h3>
                 <br>
                 <br>
                 <div class="col-md-4">
